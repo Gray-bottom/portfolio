@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>小底 · AI 产品经理作品集</title>
-<meta name="description" content="三个自建项目：多智能体研报系统、本地压缩工具、线上美术展馆。产品定义、方案设计与实现均由本人完成。">
+<meta name="description" content="四件自建作品：能查证出处的研报助手、按目标大小压缩文件的工具、线上美术展馆，以及一款点开就能玩的动作游戏。产品定义、方案设计与实现均由本人完成。">
 <link rel="preload" as="font" type="font/woff2" href="fonts/cormorant-garamond-var.woff2" crossorigin>
 <style>
   @font-face {
@@ -373,7 +373,7 @@
       var(--line) 76px, var(--line) 100%);
   }
 
-  #p2 { background: var(--tint); }
+  #p2, #p4 { background: var(--tint); }
 
   .project__head {
     max-width: var(--maxw);
@@ -876,6 +876,92 @@
     border-radius: 2px;
   }
 
+  /* ---------- 在线试玩 ---------- */
+
+  .play {
+    margin-top: 30px;
+    padding: clamp(22px, 3vw, 34px);
+    border: 1px solid var(--ink);
+    background:
+      radial-gradient(620px 280px at 10% 0%, rgba(180, 83, 14, 0.22), transparent 72%),
+      radial-gradient(480px 260px at 96% 100%, rgba(180, 83, 14, 0.14), transparent 72%),
+      var(--ink);
+    color: #F3F1E9;
+    box-shadow: var(--shadow-md);
+  }
+
+  .play__top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  .play .eyebrow { color: #DE8A45; display: block; }
+
+  .play__title {
+    font-family: var(--sans);
+    font-size: 23px;
+    font-weight: 650;
+    line-height: 1.45;
+    margin: 10px 0 0;
+    color: #F7F5EE;
+  }
+
+  .play__desc {
+    margin: 9px 0 0;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #EAE5D8;
+    max-width: 36em;
+  }
+
+  .play__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 9px 18px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background .2s, border-color .2s, color .2s, transform .2s;
+  }
+
+  .btn:active { transform: translateY(1px); }
+
+  .btn--primary { background: var(--accent); border-color: var(--accent); color: #FFFFFF; }
+  .btn--primary:hover { background: #C85F13; border-color: #C85F13; }
+
+  .btn--ghost { background: transparent; border-color: rgba(243, 241, 233, 0.38); color: #F3F1E9; }
+  .btn--ghost:hover { border-color: #F3F1E9; background: rgba(243, 241, 233, 0.08); }
+
+  .play__frame {
+    display: none;
+    margin-top: 22px;
+    aspect-ratio: 16 / 9;
+    background: #0E1013;
+    border: 1px solid rgba(243, 241, 233, 0.22);
+  }
+
+  .play__frame.is-open { display: block; }
+
+  .play__frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+
+  .play__note {
+    margin: 12px 0 0;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #DDD6C5;
+  }
+
   /* ---------- 结尾 ---------- */
 
   .closing {
@@ -1032,7 +1118,7 @@
       font-size: 10.5pt;
     }
 
-    .nav, .lightbox { display: none !important; }
+    .nav, .lightbox, .play { display: none !important; }
 
     .reveal { opacity: 1 !important; transform: none !important; }
 
@@ -1088,7 +1174,7 @@
     .track__stages { grid-template-columns: repeat(2, 1fr) !important; }
 
     .progress-line, .project::before { display: none !important; }
-    .hero, #p2 { background: #fff !important; }
+    .hero, #p2, #p4 { background: #fff !important; }
     .closing { border-top: 0 !important; }
     .content > section + section { border-top: 0 !important; padding-top: 0 !important; }
     .side { padding-left: 0 !important; border-left: 0 !important; }
@@ -1115,6 +1201,7 @@
       <a href="#p1">01 研报助手</a>
       <a href="#p2">02 密排</a>
       <a href="#p3">03 美术展馆</a>
+      <a href="#p4">04 葱花勇者</a>
       <a href="#contact">联系</a>
     </div>
   </div>
@@ -1124,10 +1211,10 @@
   <div class="hero__grid">
     <div>
       <p class="eyebrow">作品集 · 2026</p>
-      <h1 class="hero__title display">三件作品，<br><em>从想法做到上线</em></h1>
+      <h1 class="hero__title display">四件作品，<br><em>从想法做到上线</em></h1>
       <p class="hero__claim">
-        一个能查证出处的研报助手、一个按目标大小压缩文件的工具、一个把画作当作品展出的线上展馆。
-        三件都是我自己定问题、定做法，再借助 AI 写出来的。
+        一个能查证出处的研报助手、一个按目标大小压缩文件的工具、一个把画作当作品展出的线上展馆，还有一款点开链接就能玩的动作游戏。
+        四件都是我自己定问题、定做法，再借助 AI 写出来的。
       </p>
       <div class="hero__meta">
         <span>西安电子科技大学</span>
@@ -1151,6 +1238,11 @@
       <a class="index__item" href="#p3">
         <span class="index__no">03</span>
         <span class="index__name">美术展馆<small>把相册变成一场展览</small></span>
+        <span class="index__arrow">→</span>
+      </a>
+      <a class="index__item" href="#p4">
+        <span class="index__no">04</span>
+        <span class="index__name">葱花勇者<small>点开链接就能打一局</small></span>
         <span class="index__arrow">→</span>
       </a>
     </div>
@@ -1606,6 +1698,161 @@
   </div>
 </article>
 
+<!-- ═══════════════ 04 ═══════════════ -->
+
+<article class="project" id="p4">
+  <div class="project__head reveal">
+    <div class="project__kicker">
+      <span class="project__no">04</span>
+      <span class="eyebrow">网页游戏</span>
+    </div>
+    <h2 class="project__title">葱花勇者：七层蒸笼塔</h2>
+    <p class="project__sub">点开链接就能玩的动作闯关游戏：三个角色、七层蒸屉，每层打完还有一次自己决定往哪走的机会。</p>
+
+    <div class="spec">
+      <div class="spec__cell">
+        <div class="spec__k">我做了什么</div>
+        <div class="spec__v">玩法、关卡、界面与实现，独立完成</div>
+      </div>
+      <div class="spec__cell">
+        <div class="spec__k">给谁用</div>
+        <div class="spec__v">想随手玩几分钟的人，电脑手机都行</div>
+      </div>
+      <div class="spec__cell">
+        <div class="spec__k">规模</div>
+        <div class="spec__v">3 个角色 / 7 层关卡 / 7 位首领</div>
+      </div>
+      <div class="spec__cell">
+        <div class="spec__k">在哪玩</div>
+        <div class="spec__v"><a href="https://conghua-hero.app.workbuddy.host/?sharecode=7CQWEATRU3" target="_blank" rel="noopener">在线试玩 ↗</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-top: clamp(30px, 5vh, 48px); padding-bottom: clamp(8px, 2vh, 16px);">
+    <figure class="reveal">
+      <div class="shot"><img src="shots/game-title.webp" alt="葱花勇者标题页：剧情、开始按钮与次要入口" width="1440" height="810" loading="lazy"></div>
+      <figcaption><b>图 11</b><span>标题页。一句剧情、一个开始按钮，每日挑战、玩法说明这些次要入口收成一行，不抢第一次进来的注意力。</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="project__body">
+    <aside class="side reveal">
+      <h4>为什么做这个</h4>
+      <p>想让别人真的玩到一个自己做的游戏，最难的常常不是玩法，是把链接送到人手里之后的那几分钟：要装东西、要注册、要等下载，多数人在这几步就走了。</p>
+      <p>所以「点开就能玩」被放在第一条，玩法围着它设计：不用安装，不用注册，进度直接存在自己的浏览器里。</p>
+    </aside>
+
+    <div class="content reveal">
+
+      <section>
+        <h3>怎么用</h3>
+        <p>打开链接，挑一个角色，从第一层蒸屉往上打。每层两波小怪加一位首领，打完进补给站，用掉落的面币买一项成长，再决定继续往上还是重开这一层。七层打完有结算，另外留了波次一直往上加的无尽模式。</p>
+      </section>
+
+      <section>
+        <h3>三个取舍</h3>
+        <div class="decisions">
+
+          <div class="decision">
+            <div class="decision__top">
+              <span class="decision__no">1</span>
+              <p class="decision__title">先定「点开就能玩」，再定玩法</p>
+            </div>
+            <p class="decision__body">
+              打开链接就是标题页，不要求安装、不要求注册，进度存在浏览器本地。
+              <span class="why"><span class="tag">为什么</span>这个游戏靠一个链接传出去，多一步就少一批人，而最愿意随手试一下的正是这批人。</span>
+              <span class="cost"><span class="tag tag--cost">代价</span>电脑和手机要各做一套操作与界面，横竖屏都得照顾。</span>
+            </p>
+          </div>
+
+          <div class="decision">
+            <div class="decision__top">
+              <span class="decision__no">2</span>
+              <p class="decision__title">三个角色共用一套操作</p>
+            </div>
+            <p class="decision__body">
+              换角色只换打法：投筷、糖浆拍、钳击三连，位移和爆发各不相同；格挡、能量和按键位置不动。
+              <span class="why"><span class="tag">为什么</span>换角色的乐趣在打法不同，不该让人重新背一遍按键。</span>
+              <span class="cost"><span class="tag tag--cost">代价</span>差异只能放在技能效果和属性上，比多加几个按键费心思。</span>
+            </p>
+          </div>
+
+          <div class="decision">
+            <div class="decision__top">
+              <span class="decision__no">3</span>
+              <p class="decision__title">每层之间留一次决定</p>
+            </div>
+            <p class="decision__body">
+              打完一层进补给站，面币通常只够买一两样，选完才点前往下一层；也可以重开本层。
+              <span class="why"><span class="tag">为什么</span>连着打七层会疲，中间给一个自己能做主的停顿；失败时也有明确目标——下次多攒点面币，或者换个买法。</span>
+              <span class="cost"><span class="tag tag--cost">代价</span>节奏比一路打到底慢，掉落和价格要反复调。</span>
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <section>
+        <h3>做出来的东西</h3>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat__n">3</div>
+            <div class="stat__l">个可选角色<br>打法互不重样</div>
+          </div>
+          <div class="stat">
+            <div class="stat__n">7</div>
+            <div class="stat__l">层关卡<br>每层两波小怪加一位首领</div>
+          </div>
+          <div class="stat">
+            <div class="stat__n">10</div>
+            <div class="stat__l">类成长<br>层间用面币挑</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-bottom: clamp(24px, 4vh, 40px);">
+    <div class="shots-2 reveal">
+      <figure>
+        <div class="shot"><img src="shots/game-char.webp" alt="选角页：三张角色卡与属性" width="1440" height="810" loading="lazy"></div>
+        <figcaption><b>图 12</b><span>选角页。三张卡只放立绘、一句定位、两条属性和三个技能名，剩下的交给进去打一局。</span></figcaption>
+      </figure>
+      <figure>
+        <div class="shot"><img src="shots/game-shop.webp" alt="补给站：层间用面币购买成长" width="1440" height="810" loading="lazy"></div>
+        <figcaption><b>图 13</b><span>补给站。每张卡一句话说清效果，右上角常驻面币，可以重开本层，也可以直接前往下一层。</span></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-bottom: clamp(24px, 4vh, 40px);">
+    <figure class="reveal">
+      <div class="shot"><img src="shots/game-play.webp" alt="战斗画面：常驻状态、预警形状与连斩反馈" width="1440" height="810" loading="lazy"></div>
+      <figcaption><b>图 14</b><span>战斗画面。常驻信息只有生命、蒸汽、层数、面币和技能键，其余收进暂停页；危险用形状标出来，圈在哪里就落哪里。</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="wrap" style="padding-bottom: clamp(56px, 9vh, 96px);">
+    <div class="play reveal">
+      <div class="play__top">
+        <div>
+          <span class="eyebrow">在线试玩</span>
+          <h3 class="play__title">不用下载，点一下就能打一局</h3>
+          <p class="play__desc">游戏可以直接放在这个页面里，点开后从选角开始；也可以另开窗口全屏玩。电脑上先点一下画面再用键盘，手机横屏更顺手。</p>
+        </div>
+        <div class="play__actions">
+          <button class="btn btn--primary" id="playBtn" type="button">在页面里试玩</button>
+          <a class="btn btn--ghost" href="https://conghua-hero.app.workbuddy.host/?sharecode=7CQWEATRU3" target="_blank" rel="noopener">新窗口打开 ↗</a>
+        </div>
+      </div>
+      <div class="play__frame" id="playFrame"></div>
+      <p class="play__note">试玩加载的是线上版本，第一次点开需要几秒；进度存在你自己的浏览器里。</p>
+    </div>
+  </div>
+</article>
+
 <!-- ═══════════════ 结尾 ═══════════════ -->
 
 <footer class="closing" id="contact">
@@ -1613,7 +1860,7 @@
     <div>
       <p class="eyebrow">联系</p>
       <h2>如果你需要一个<br>能把产品做完的人</h2>
-      <p>这三件东西没有需求文档。问题是我自己找的，做法是我定的，代码在 AI 协助下写完。求职方向是 AI 产品经理。</p>
+      <p>这四件东西没有需求文档。问题是我自己找的，做法是我定的，代码在 AI 协助下写完。求职方向是 AI 产品经理。</p>
     </div>
     <div class="closing__links">
       <a class="closing__link" href="https://github.com/Gray-bottom" target="_blank" rel="noopener">
@@ -1621,6 +1868,9 @@
       </a>
       <a class="closing__link" href="mailto:23069100154@stu.xidian.edu.cn">
         <span>23069100154@stu.xidian.edu.cn</span><span>↗</span>
+      </a>
+      <a class="closing__link" href="https://conghua-hero.app.workbuddy.host/?sharecode=7CQWEATRU3" target="_blank" rel="noopener">
+        <span>在线试玩 / 葱花勇者</span><span>↗</span>
       </a>
       <a class="closing__link" href="https://gray-bottom.github.io/ArtGallery/" target="_blank" rel="noopener">
         <span>线上展馆</span><span>↗</span>
@@ -1690,6 +1940,29 @@
   function close() { box.classList.remove('is-open'); boxImg.src = ''; }
   box.addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+
+  // 在线试玩：点击后才加载，不拖慢首屏
+  var playBtn = document.getElementById('playBtn');
+  var playFrame = document.getElementById('playFrame');
+  var PLAY_URL = 'https://conghua-hero.app.workbuddy.host/?sharecode=7CQWEATRU3';
+  if (playBtn && playFrame) {
+    playBtn.addEventListener('click', function () {
+      if (playFrame.classList.contains('is-open')) {
+        playFrame.classList.remove('is-open');
+        playFrame.innerHTML = '';
+        playBtn.textContent = '在页面里试玩';
+        return;
+      }
+      var frame = document.createElement('iframe');
+      frame.src = PLAY_URL;
+      frame.title = '葱花勇者：七层蒸笼塔 在线试玩';
+      frame.setAttribute('allowfullscreen', '');
+      playFrame.appendChild(frame);
+      playFrame.classList.add('is-open');
+      playBtn.textContent = '收起试玩';
+      playFrame.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
 })();
 </script>
 
